@@ -3,10 +3,10 @@ class VisitsController < ApplicationController
     @link = Link.find_by(slug: params[:slug])
 
     if @link
-      Visit.create(link_id: @link.id)
+      Visit.create(link_id: @link.id, ip_address: request.remote_ip)
       redirect_to "#{@link.target_url}"
     else
-      redirect_to '/'
+      raise ActionController::RoutingError.new('Not Found')
     end
   end
 end
