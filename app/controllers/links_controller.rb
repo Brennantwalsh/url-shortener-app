@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  before_action :authenticate_user!
   def index
     @links = Link.all
   end
@@ -8,7 +9,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.create(user_id: params[:user_id],
+    @link = Link.create(user_id: current_user.id,
                         slug: params[:slug],
                         target_url: params[:target_url])
 
