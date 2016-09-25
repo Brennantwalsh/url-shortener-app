@@ -20,10 +20,16 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
+    unless @link.user_id == current_user.id
+      redirect_to '/'
+    end
   end
 
   def edit
     @link = Link.find(params[:id])
+    unless current_user.id == @link.user_id
+      redirect_to '/'
+    end
   end
 
   def update

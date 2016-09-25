@@ -1,4 +1,4 @@
-<% if current_user.id == @link.user_id %>
+
   <h2>Update Links</h2>
   <%= form_tag "/links/#{@link.id}", method: :patch do %>
     <div>
@@ -12,4 +12,3 @@
 
     <%= submit_tag "Ediiiiiiiiit It" %>
   <% end %>
-<% end %>
