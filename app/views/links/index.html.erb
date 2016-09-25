@@ -6,12 +6,14 @@
     <th>Target URL</th>
     <th>Created At</th>
   </tr>
-  <% @links.each do |link| %>
-    <tr>
-      <td><%= link.slug %></td>
-      <td><%= link.target_url %></td>
-      <td><%= link.created_at %></td>
-    </tr>
-  <% end %>
+    <% @links.each do |link| %>
+      <% if current_user.id == link.user_id %>
+      <tr>
+        <td><%= link.slug %></td>
+        <td><%= link.target_url %></td>
+        <td><%= link.created_at %></td>
+      </tr>
+      <% end %>
+    <% end %>
 <table>
 

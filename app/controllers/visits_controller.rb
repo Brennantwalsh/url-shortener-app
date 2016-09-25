@@ -1,4 +1,5 @@
 class VisitsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @link = Link.find_by(slug: params[:slug])
 
